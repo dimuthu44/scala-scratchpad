@@ -2,18 +2,21 @@ package aes
 
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
+import java.security.SecureRandom
 import java.util
 import java.util.Base64
 
 import javax.crypto.Cipher
-import javax.crypto.spec.SecretKeySpec
+import javax.crypto.spec.{IvParameterSpec, SecretKeySpec}
 
 //import scala.sys.process.processInternal.OutputStream
 import scala.util.Try
 
 object EncryptionHandler {
   // TODO: Another mode of operation: https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)
-  private val cipherInstance = "AES/ECB/PKCS5Padding"
+  private val cipherInstance = "AES/CBC/PKCS5Padding"
+  private val CIPHER = "AES"
+  private val IV_LENGTH = 16 // cipher block size
 
   def encrypt(storageInputStream: InputStream, secret: String): Try[Array[Byte]] = {
     Try {
@@ -21,6 +24,16 @@ object EncryptionHandler {
       val cipher = Cipher.getInstance(cipherInstance)
       cipher.init(Cipher.ENCRYPT_MODE, secretKey)
       Base64.getEncoder.encode(cipher.doFinal("".getBytes())) //todo
+    }
+  }
+
+  def encrypt(payload: Array[Byte], secret: String): Try[Array[Byte]] = {
+    Try {
+      val secretKey = setKey(secret)
+      val cipher = Cipher.getInstance(cipherInstance)
+      val iv = generateIV()
+      cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(iv))
+      iv ++ Base64.getEncoder.encode(cipher.doFinal(payload))
     }
   }
 
@@ -50,4 +63,11 @@ object EncryptionHandler {
 //    }
 //    while (read) dest.write(buffer, 0, len)
 //  }
+
+  def generateIV(): Array[Byte] = {
+    val random = new SecureRandom()
+    val iv = new Array[Byte](IV_LENGTH)
+    random.nextBytes(iv)
+    java.util.Arrays.copyOf(iv, IV_LENGTH)
+  }
 }
