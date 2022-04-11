@@ -35,7 +35,12 @@ public class VendingMachine {
         return price;
     }
 
-    public List<Item> buyItems(List<Item> itemsToBuy, BigDecimal amount) {
+    /**
+     * todo:
+     * 1. Exception handling
+     * 2. Handle items count not enough
+     */
+    public BigDecimal buyItems(List<Item> itemsToBuy, BigDecimal amountPaid, PaymentMethod paymentMethod) throws Exception {
         BigDecimal total = BigDecimal.ZERO;
         for (Item item : itemList) {
             itemList.remove(item);
@@ -45,7 +50,9 @@ public class VendingMachine {
         System.out.println("Total cost is : " + total);
         printItems();
 
-        return itemsToBuy;
+        PaymentManager paymentManager = new PaymentManager(paymentMethod);
+        BigDecimal balance = paymentManager.calculatePaymentAndReturnBalance(total, amountPaid);
+        return balance;
     }
 
     private void printItems() {
