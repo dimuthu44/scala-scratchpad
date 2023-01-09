@@ -17,3 +17,10 @@ class MapFlat {
 
   def g(v: Int) = List(v-1, v, v+1)
 }
+
+object Flatten extends App {
+  new MapFlat().mapflat()
+
+}
+
+
