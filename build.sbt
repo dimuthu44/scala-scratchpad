@@ -27,11 +27,8 @@ libraryDependencies ++= {
     "commons-io" % "commons-io" % commonsioVersion,
     "org.slf4j" % "slf4j-api" % "1.7.5",
     "ch.qos.logback" % "logback-classic" % "1.0.9",
-    "com.amazonaws" % "aws-java-sdk" % "1.11.371",
+    "com.amazonaws" % "aws-java-sdk-s3" % "1.11.371",
     "org.scalatest" %% "scalatest" % "3.1.1" % "test",
   )
 }
 
-resolvers ++= Seq(
-  "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
-)
