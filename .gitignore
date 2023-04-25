@@ -6,3 +6,4 @@ project/project/
 *.DS_Store
 .idea/
 .idea_modules/
+.bsp/

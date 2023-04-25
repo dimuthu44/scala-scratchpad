@@ -13,6 +13,8 @@ libraryDependencies ++= {
 
   lazy val minioVersion = "6.0.13"
   lazy val commonsioVersion = "2.5"
+  lazy val catsVersion = "3.4.8"
+  lazy val circeVersion = "0.14.1"
 
   Seq(
     "commons-io" % "commons-io" % "2.5",
@@ -29,6 +31,16 @@ libraryDependencies ++= {
     "ch.qos.logback" % "logback-classic" % "1.0.9",
     "com.amazonaws" % "aws-java-sdk-s3" % "1.11.371",
     "org.scalatest" %% "scalatest" % "3.1.1" % "test",
+
+    //cats and doobie
+    "org.typelevel" %% "cats-effect" % catsVersion,
+    "io.circe" %% "circe-core" % circeVersion,
+    "io.circe" %% "circe-generic" % circeVersion,
+    "io.circe" %% "circe-config" % "0.8.0",
+
+    "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
+    "org.tpolecat" %% "doobie-hikari" % "1.0.0-RC1",
+    "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )
 }
 

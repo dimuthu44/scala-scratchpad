@@ -1,4 +1,3 @@
-import com.amazonaws.services.stepfunctions.builder.states.WaitFor
 import flatmap.MapFlat
 import fold.FoldDemo
 
@@ -6,7 +5,7 @@ import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class MapFlatTest extends AnyFlatSpec with BeforeAndAfterAll with WaitFor with Matchers {
+class MapFlatTest extends AnyFlatSpec with BeforeAndAfterAll with Matchers {
 
 //  "trying some mapflat " should "run" in {
 //    var mapFlat: MapFlat = new MapFlat
