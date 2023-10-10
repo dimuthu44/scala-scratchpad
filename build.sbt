@@ -40,7 +40,11 @@ libraryDependencies ++= {
 
     "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
     "org.tpolecat" %% "doobie-hikari" % "1.0.0-RC1",
-    "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
+    "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1",
+
+    "org.apache.xmlgraphics" % "fop" % "2.6",
+    "org.freemarker" % "freemarker" % "2.3.32"
+
   )
 }
 
