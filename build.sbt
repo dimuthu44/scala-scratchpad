@@ -41,10 +41,14 @@ libraryDependencies ++= {
     "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
     "org.tpolecat" %% "doobie-hikari" % "1.0.0-RC1",
     "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1",
-
+    // FOP
     "org.apache.xmlgraphics" % "fop" % "2.6",
-    "org.freemarker" % "freemarker" % "2.3.32"
+    "org.freemarker" % "freemarker" % "2.3.32",
+    // ed25519
+    "org.bouncycastle" % "bcprov-jdk18on" % "1.77",
+    "net.i2p.crypto" % "eddsa" % "0.3.0",
 
+//    "bcprov-jdk18on-177.jar\nbcprov-ext-jdk18on-177.jar\t"
   )
 }
 
