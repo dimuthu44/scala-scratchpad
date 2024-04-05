@@ -20,7 +20,7 @@ object PDFGenerator {
     try {
       val fopFactory = FopFactory.newInstance(new File(".").toURI)
 
-      val outputStream = new BufferedOutputStream(new FileOutputStream("src/main//resources/sample.pdf"))
+      val outputStream = new BufferedOutputStream(new FileOutputStream("src/main/resources/sample.pdf"))
 
       val factory = TransformerFactory.newInstance
       val transformer = factory.newTransformer
